@@ -25,8 +25,8 @@ public class BaseUserTest {
     public static Object[][] getUser() {
         return new Object[][]{
                 {new User(UserData.USER_1.getEmail(), UserData.USER_1.getPassword(), UserData.USER_1.getName())},
-//                {new User(UserData.USER_2.getEmail(), UserData.USER_2.getPassword(), UserData.USER_2.getName())},
-//                {new User(UserData.USER_3.getEmail(), UserData.USER_3.getPassword(), UserData.USER_3.getName())}
+                {new User(UserData.USER_2.getEmail(), UserData.USER_2.getPassword(), UserData.USER_2.getName())},
+                {new User(UserData.USER_3.getEmail(), UserData.USER_3.getPassword(), UserData.USER_3.getName())}
         };
     }
 }
