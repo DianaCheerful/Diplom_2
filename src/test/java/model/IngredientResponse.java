@@ -1,8 +1,13 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+
 import java.util.List;
 
-public class IngredientResponse {
+@Data
+@JsonIgnoreProperties(ignoreUnknown = true)
+class IngredientResponse {
 
     private boolean success;
     private List<Ingredient> data;
