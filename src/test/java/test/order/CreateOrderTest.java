@@ -3,7 +3,7 @@ package test.order;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
-import model.request.Ingredients;
+import model.Ingredients;
 import org.junit.Test;
 import test.BaseTest;
 

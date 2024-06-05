@@ -4,7 +4,7 @@ package model.response;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import model.request.Order;
+import model.Order;
 
 @Data
 @NoArgsConstructor

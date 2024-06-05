@@ -1,6 +1,6 @@
 package constant;
 
-import model.request.User;
+import model.User;
 
 public class TestConstants {
 

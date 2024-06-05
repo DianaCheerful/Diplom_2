@@ -3,7 +3,7 @@ package test;
 import constant.UserData;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import model.request.User;
+import model.User;
 import org.junit.BeforeClass;
 import org.junit.runners.Parameterized;
 

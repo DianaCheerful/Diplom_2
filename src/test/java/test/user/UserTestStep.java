@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
-import model.request.User;
+import model.User;
 import model.response.UserResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.protocol.HTTP;
