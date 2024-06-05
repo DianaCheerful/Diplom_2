@@ -1,16 +1,14 @@
-package test;
+package test.user;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
-import model.User;
-import model.UserResponse;
+import model.request.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import test.api.UserMethod;
 
-import static test.api.UserMethod.*;
+import static test.user.UserMethod.*;
 
 @RunWith(Parameterized.class)
 public class CreateUserTest extends BaseUserTest {
@@ -23,29 +21,27 @@ public class CreateUserTest extends BaseUserTest {
     @DisplayName("Should create unique user")
     @Description("Create test for /api/auth/register endpoint - POST method")
     public void shouldCreateUniqueUser() {
-        Response response = createUser(user);
-        checkUserCreatedResponseAndStatusCode(response);
-        String accessToken = response.body().as(UserResponse.class).getAccessToken();
-        UserMethod.deleteUser(accessToken);
+        createdResponse = createUser(user);
+        checkUserCreatedResponseAndStatusCode(createdResponse);
+        UserMethod.deleteUser(getAccessToken(createdResponse));
     }
 
     @Test
     @DisplayName("Should not create already existed user")
     @Description("Checking double creating for /api/auth/register endpoint - POST method")
     public void shouldNotCreateUniqueUserTwice() {
+        createdResponse = createUser(user);
         Response response = createUser(user);
-        String accessToken = response.body().as(UserResponse.class).getAccessToken();
-        Response secondResponse = createUser(user);
-        checkUserAlreadyExistsResponseAndStatusCode(secondResponse);
-        UserMethod.deleteUser(accessToken);
+        checkUserAlreadyExistsResponseAndStatusCode(response);
+        UserMethod.deleteUser(getAccessToken(createdResponse));
     }
 
     @Test
     @DisplayName("Should not create unique user without mandatory fields")
     @Description("Checking lack of User data for /api/auth/register endpoint - POST method")
     public void shouldNotCreateUniqueUserWithoutName() {
-        Response response = createUser(new User(user.getEmail(), user.getPassword()));
-        checkEmptyRequiredFieldsResponseAndStatusCode(response);
+        createdResponse = createUser(new User(user.getEmail(), user.getPassword()));
+        checkEmptyRequiredFieldsResponseAndStatusCode(createdResponse);
     }
 
 }

@@ -1,7 +1,9 @@
-package model;
+package model.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -10,7 +12,7 @@ public class UserResponse {
 
     private boolean success;
     private String message;
-    private User user;
+    private UserFields user;
     private String accessToken;
     private String refreshToken;
 
@@ -19,10 +21,18 @@ public class UserResponse {
         this.message = message;
     }
 
-    public UserResponse(boolean success, User user, String accessToken, String refreshToken) {
+    public UserResponse(boolean success, UserFields user, String accessToken, String refreshToken) {
         this.success = success;
         this.user = user;
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UserFields {
+        private String email;
+        private String name;
     }
 }

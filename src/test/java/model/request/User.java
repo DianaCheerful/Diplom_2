@@ -1,4 +1,4 @@
-package model;
+package model.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -15,8 +15,9 @@ public class User {
     private String password;
     private String name;
 
-    public User(String email, String name) {
+    public User(String email, String password) {
         this.email = email;
-        this.name = name;
+        this.password = password;
     }
+
 }
