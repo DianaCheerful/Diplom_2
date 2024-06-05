@@ -1,4 +1,4 @@
-package test.user;
+package test;
 
 import constant.UserData;
 import io.restassured.RestAssured;
@@ -9,13 +9,17 @@ import org.junit.runners.Parameterized;
 
 import static constant.TestConstants.STELLAR_BURGER_URL;
 
-public class BaseUserTest {
+public class BaseTest {
 
-    protected final User user;
+    protected User user;
     protected static Response createdResponse;
 
-    public BaseUserTest(User user) {
+    public BaseTest(User user) {
         this.user = user;
+    }
+
+    public BaseTest() {
+
     }
 
     @BeforeClass

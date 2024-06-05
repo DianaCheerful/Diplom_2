@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.blankOrNullString;
 import static org.hamcrest.Matchers.equalTo;
 
-public class UserMethod {
+public class UserTestStep {
 
     @Step("Send POST-request /api/auth/register")
     public static Response createUser(User user) {

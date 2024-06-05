@@ -7,11 +7,12 @@ import model.request.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import test.BaseTest;
 
-import static test.user.UserMethod.*;
+import static test.user.UserTestStep.*;
 
 @RunWith(Parameterized.class)
-public class CreateUserTest extends BaseUserTest {
+public class CreateUserTest extends BaseTest {
 
     public CreateUserTest(User user) {
         super(user);

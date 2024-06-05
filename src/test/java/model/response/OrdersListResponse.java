@@ -1,10 +1,11 @@
 package model.response;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import model.request.Ingredient;
+import model.request.Order;
 
 import java.util.List;
 
@@ -12,8 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class IngredientResponse {
+public class OrdersListResponse {
 
     private boolean success;
-    private List<Ingredient> data;
+    private List<Order> orders;
 }
