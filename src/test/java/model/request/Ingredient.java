@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Data
 @AllArgsConstructor
@@ -13,7 +12,6 @@ import lombok.NonNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Ingredient {
 
-    @NonNull
     private String _id;
     private String name;
     private String type;
@@ -27,7 +25,4 @@ public class Ingredient {
     private String image_large;
     private String __v;
 
-    public Ingredient(String _id) {
-        this._id = _id;
-    }
 }
