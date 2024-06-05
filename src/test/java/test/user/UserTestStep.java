@@ -102,7 +102,7 @@ public class UserTestStep {
     public static void checkEmptyTokenResponseAndStatusCode(Response response) {
         response
                 .then().assertThat().body(RESPONSE_SUCCESS_FIELD, equalTo(false))
-                .and().assertThat().body(RESPONSE_MESSAGE_FIELD, equalTo(EMPTY_TOKEN_MESSAGE))
+                .and().assertThat().body(RESPONSE_MESSAGE_FIELD, equalTo(SHOULD_BE_AUTHORISED_MESSAGE))
                 .and().statusCode(HttpStatus.SC_UNAUTHORIZED);
     }
 

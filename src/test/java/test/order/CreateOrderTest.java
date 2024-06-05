@@ -25,9 +25,10 @@ public class CreateOrderTest extends BaseTest {
     @Description("Create test with authorization for /api/orders endpoint - POST method")
     public void shouldCreateOrderWithAuth() {
         createdResponse = createUser(USER_SAMPLE_DATA);
-        Response response = createOrderWithAuth(getAccessToken(createdResponse), getRandomIngredients());
+        String accessToken = getAccessToken(createdResponse);
+        Response response = createOrderWithAuth(accessToken, getRandomIngredients());
         checkOrderCreatedResponseAndStatusCode(response);
-        deleteUser(getAccessToken(createdResponse));
+        deleteUser(accessToken);
     }
 
     @Test

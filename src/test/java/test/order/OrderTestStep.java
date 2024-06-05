@@ -41,6 +41,18 @@ public class OrderTestStep {
                 .post(ORDER_METHOD);
     }
 
+    @Step("Send GET-request /api/orders with authorization header")
+    public static Response getUserOrdersWithAuth(String accessToken) {
+        return given()
+                .header(AUTHORIZATION_HEADER, accessToken)
+                .get(ORDER_METHOD);
+    }
+
+    @Step("Send GET-request /api/orders without authorization header")
+    public static Response getUserOrdersWithoutAuth() {
+        return given().get(ORDER_METHOD);
+    }
+
     @Step("Check that order create response is success and http status code is 200")
     public static void checkOrderCreatedResponseAndStatusCode(Response response) {
         response
@@ -64,6 +76,22 @@ public class OrderTestStep {
                 .then().assertThat().body(RESPONSE_SUCCESS_FIELD, equalTo(false))
                 .and().assertThat().body(RESPONSE_MESSAGE_FIELD, equalTo(WRONG_INGREDIENTS_IDS_MESSAGE))
                 .and().statusCode(HttpStatus.SC_BAD_REQUEST);
+    }
+
+    @Step("Check that user order get with auth response is success and http status code is 200")
+    public static void checkUserOrderGetWithAuthResponseAndStatusCode(Response response) {
+        response
+                .then().assertThat().body(RESPONSE_SUCCESS_FIELD, equalTo(true))
+                .and().assertThat().body(ORDERS_FIELD, notNullValue())
+                .and().statusCode(HttpStatus.SC_OK);
+    }
+
+    @Step("Check that user order get with auth response is failed and http status code is 401")
+    public static void checkUserOrderGetWithoutAuthResponseAndStatusCode(Response response) {
+        response
+                .then().assertThat().body(RESPONSE_SUCCESS_FIELD, equalTo(false))
+                .and().assertThat().body(RESPONSE_MESSAGE_FIELD, equalTo(SHOULD_BE_AUTHORISED_MESSAGE))
+                .and().statusCode(HttpStatus.SC_UNAUTHORIZED);
     }
 
 

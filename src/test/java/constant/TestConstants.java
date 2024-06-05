@@ -18,10 +18,11 @@ public class TestConstants {
     public static final String RESPONSE_MESSAGE_FIELD = "message";
     public static final String ORDER_NAME_FIELD = "name";
     public static final String ORDER_FIELD = "order";
+    public static final String ORDERS_FIELD = "orders";
     public static final String USER_ALREADY_EXISTS_MESSAGE = "User already exists";
     public static final String EMPTY_REQUIRED_FIELDS_MESSAGE = "Email, password and name are required fields";
     public static final String INCORRECT_EMAIL_OR_PASSWORD_MESSAGE = "email or password are incorrect";
-    public static final String EMPTY_TOKEN_MESSAGE = "You should be authorised";
+    public static final String SHOULD_BE_AUTHORISED_MESSAGE = "You should be authorised";
     public static final String EMPTY_INGREDIENTS_MESSAGE = "Ingredient ids must be provided";
     public static final String WRONG_INGREDIENTS_IDS_MESSAGE = "One or more ids provided are incorrect";
     public static final User USER_SAMPLE_DATA = new User("nobody@rr.cog", "froh76", "Drake");
