@@ -17,17 +17,26 @@ import java.util.stream.Collectors;
 
 import static constant.TestConstants.*;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 
 public class OrderTestStep {
 
-    @Step("Send POST-request /api/orders")
+    @Step("Send POST-request /api/orders with authorization header")
     public static Response createOrderWithAuth(String accessToken, Ingredients ingredients) {
         return given()
                 .headers(new Headers(
                         new Header(HTTP.CONTENT_TYPE, JSON_TYPE),
                         new Header(AUTHORIZATION_HEADER, accessToken))
                 )
+                .body(ingredients)
+                .post(ORDER_METHOD);
+    }
+
+    @Step("Send POST-request /api/orders without authorization header")
+    public static Response createOrderWithoutAuth(Ingredients ingredients) {
+        return given()
+                .header(HTTP.CONTENT_TYPE, JSON_TYPE)
                 .body(ingredients)
                 .post(ORDER_METHOD);
     }
@@ -40,6 +49,23 @@ public class OrderTestStep {
                 .and().assertThat().body(ORDER_FIELD, notNullValue())
                 .and().statusCode(HttpStatus.SC_OK);
     }
+
+    @Step("Check that order create response is failed without ingredients and http status code is 400")
+    public static void checkOrderCreateFailedWithoutIngredientsResponseAndStatusCode(Response response) {
+        response
+                .then().assertThat().body(RESPONSE_SUCCESS_FIELD, equalTo(false))
+                .and().assertThat().body(RESPONSE_MESSAGE_FIELD, equalTo(EMPTY_INGREDIENTS_MESSAGE))
+                .and().statusCode(HttpStatus.SC_BAD_REQUEST);
+    }
+
+    @Step("Check that order create response is failed with wrong ingredients ids and http status code is 400")
+    public static void checkOrderCreateFailedWithWrongIngredientsIdsResponseAndStatusCode(Response response) {
+        response
+                .then().assertThat().body(RESPONSE_SUCCESS_FIELD, equalTo(false))
+                .and().assertThat().body(RESPONSE_MESSAGE_FIELD, equalTo(WRONG_INGREDIENTS_IDS_MESSAGE))
+                .and().statusCode(HttpStatus.SC_BAD_REQUEST);
+    }
+
 
     @Step("Get three random ingredients from the list of ones")
     public static Ingredients getRandomIngredients() {

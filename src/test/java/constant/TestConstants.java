@@ -22,6 +22,9 @@ public class TestConstants {
     public static final String EMPTY_REQUIRED_FIELDS_MESSAGE = "Email, password and name are required fields";
     public static final String INCORRECT_EMAIL_OR_PASSWORD_MESSAGE = "email or password are incorrect";
     public static final String EMPTY_TOKEN_MESSAGE = "You should be authorised";
+    public static final String EMPTY_INGREDIENTS_MESSAGE = "Ingredient ids must be provided";
+    public static final String WRONG_INGREDIENTS_IDS_MESSAGE = "One or more ids provided are incorrect";
     public static final User USER_SAMPLE_DATA = new User("nobody@rr.cog", "froh76", "Drake");
+    public static final String SAMPLE_INGREDIENT_ID = "61c0c5a75d1f82901bdaaa6d";
 
 }
