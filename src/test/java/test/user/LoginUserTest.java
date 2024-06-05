@@ -24,7 +24,7 @@ public class LoginUserTest extends BaseUserTest {
         createdResponse = createUser(user);
         Response response = loginUser(user);
         checkSuccessfulLoginResponseAndStatusCode(response);
-        UserMethod.deleteUser(getAccessToken(createdResponse));
+        deleteUser(getAccessToken(createdResponse));
     }
 
     @Test

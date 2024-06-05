@@ -23,7 +23,7 @@ public class CreateUserTest extends BaseUserTest {
     public void shouldCreateUniqueUser() {
         createdResponse = createUser(user);
         checkUserCreatedResponseAndStatusCode(createdResponse);
-        UserMethod.deleteUser(getAccessToken(createdResponse));
+        deleteUser(getAccessToken(createdResponse));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class CreateUserTest extends BaseUserTest {
         createdResponse = createUser(user);
         Response response = createUser(user);
         checkUserAlreadyExistsResponseAndStatusCode(response);
-        UserMethod.deleteUser(getAccessToken(createdResponse));
+        deleteUser(getAccessToken(createdResponse));
     }
 
     @Test

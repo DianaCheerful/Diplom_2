@@ -18,7 +18,6 @@ public class TestConstants {
     public static final String EMPTY_REQUIRED_FIELDS_MESSAGE = "Email, password and name are required fields";
     public static final String INCORRECT_EMAIL_OR_PASSWORD_MESSAGE = "email or password are incorrect";
     public static final String EMPTY_TOKEN_MESSAGE = "You should be authorised";
-    public static final String INVALID_TOKEN_MESSAGE = "invalid token";
     public static final User USER_EDIT_DATA = new User("nobody@rr.cog", "froh76", "Drake");
 
 }

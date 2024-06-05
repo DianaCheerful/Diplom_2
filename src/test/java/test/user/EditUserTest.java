@@ -27,7 +27,7 @@ public class EditUserTest extends BaseUserTest {
         Response response = editUser(getAccessToken(createdResponse), USER_EDIT_DATA);
         checkSuccessfulEditResponseAndStatusCode(response);
         Response editedUserResponse = loginUser(new User(USER_EDIT_DATA.getEmail(), USER_EDIT_DATA.getPassword()));
-        UserMethod.deleteUser(getAccessToken(editedUserResponse));
+        deleteUser(getAccessToken(editedUserResponse));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class EditUserTest extends BaseUserTest {
         );
         checkSuccessfulEditResponseAndStatusCode(response);
         Response editedUserResponse = loginUser(new User(USER_EDIT_DATA.getEmail(), user.getPassword()));
-        UserMethod.deleteUser(getAccessToken(editedUserResponse));
+        deleteUser(getAccessToken(editedUserResponse));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class EditUserTest extends BaseUserTest {
         );
         checkSuccessfulEditResponseAndStatusCode(response);
         Response editedUserResponse = loginUser(new User(user.getEmail(), USER_EDIT_DATA.getPassword()));
-        UserMethod.deleteUser(getAccessToken(editedUserResponse));
+        deleteUser(getAccessToken(editedUserResponse));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class EditUserTest extends BaseUserTest {
         );
         checkSuccessfulEditResponseAndStatusCode(response);
         Response editedUserResponse = loginUser(user);
-        UserMethod.deleteUser(getAccessToken(editedUserResponse));
+        deleteUser(getAccessToken(editedUserResponse));
     }
 
     @Test
@@ -82,7 +82,7 @@ public class EditUserTest extends BaseUserTest {
                 new User(USER_EDIT_DATA.getEmail(), user.getPassword(), user.getName())
         );
         checkEmptyTokenResponseAndStatusCode(response);
-        UserMethod.deleteUser(getAccessToken(createdResponse));
+        deleteUser(getAccessToken(createdResponse));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class EditUserTest extends BaseUserTest {
                 new User(user.getEmail(), USER_EDIT_DATA.getPassword(), user.getName())
         );
         checkEmptyTokenResponseAndStatusCode(response);
-        UserMethod.deleteUser(getAccessToken(createdResponse));
+        deleteUser(getAccessToken(createdResponse));
     }
 
     @Test
@@ -108,8 +108,6 @@ public class EditUserTest extends BaseUserTest {
                 new User(user.getEmail(), user.getPassword(), USER_EDIT_DATA.getName())
         );
         checkEmptyTokenResponseAndStatusCode(response);
-        UserMethod.deleteUser(getAccessToken(createdResponse));
+        deleteUser(getAccessToken(createdResponse));
     }
-
-
 }
