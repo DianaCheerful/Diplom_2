@@ -7,8 +7,6 @@ import model.request.Ingredients;
 import org.junit.Test;
 import test.BaseTest;
 
-import java.util.ArrayList;
-
 import static constant.TestConstants.SAMPLE_INGREDIENT_ID;
 import static constant.TestConstants.USER_SAMPLE_DATA;
 import static test.order.OrderTestStep.*;
