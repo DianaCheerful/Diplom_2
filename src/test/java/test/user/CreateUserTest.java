@@ -4,6 +4,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import model.User;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -18,13 +19,20 @@ public class CreateUserTest extends BaseTest {
         super(user);
     }
 
+    @After
+    public void delete() {
+        String accessToken = getAccessToken(createdResponse);
+        if (accessToken != null) {
+            deleteUser(accessToken);
+        }
+    }
+
     @Test
     @DisplayName("Should create unique user")
     @Description("Create test for /api/auth/register endpoint - POST method")
     public void shouldCreateUniqueUser() {
         createdResponse = createUser(user);
         checkUserCreatedResponseAndStatusCode(createdResponse);
-        deleteUser(getAccessToken(createdResponse));
     }
 
     @Test
@@ -34,7 +42,6 @@ public class CreateUserTest extends BaseTest {
         createdResponse = createUser(user);
         Response response = createUser(user);
         checkUserAlreadyExistsResponseAndStatusCode(response);
-        deleteUser(getAccessToken(createdResponse));
     }
 
     @Test
